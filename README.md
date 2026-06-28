@@ -40,11 +40,14 @@ Supported operations are intentionally small and explicit in [`src/types.ts`](sr
 - `append`
 - `prepend`
 
-## Scoring model (current)
+## Runtime contract
 
-Scoring is currently simple and final-answer based.
+This repo now exposes a minimal static runtime benchmark surface for Chimera Core manual execution:
 
-[`scoreFinalAnswer()`](src/score.ts:3) in [`src/score.ts`](src/score.ts) compares a submitted final text to `expectedFinalText` using strict string equality.
+- Cases are static and deterministic in [`src/cases.ts`](src/cases.ts).
+- Each case includes runtime fields: `id`, `levelId`, `title`, `prompt`, and optional `metadata`.
+- Answers are plain text only.
+- Scoring is strict final-text equality via [`scoreAnswer()`](src/score.ts:7).
 
 There is no partial-credit rubric yet.
 
@@ -54,7 +57,8 @@ There is no partial-credit rubric yet.
 
 - benchmark metadata (`rewriteBenchmarkMetadata`)
 - available cases (`rewriteChainCases`)
-- scoring helper ([`scoreFinalAnswer()`](src/score.ts:3))
+- runtime scoring helper ([`scoreAnswer()`](src/score.ts:7))
+- minimal runtime module object (`runtimeBenchmarkModule`)
 - benchmark/case/scoring types
 
 ## Out of scope (not implemented yet)

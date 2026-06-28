@@ -3,7 +3,9 @@ import type { RewriteBenchmarkMetadata, RewriteChainCase } from "./types";
 export const rewriteBenchmarkMetadata: RewriteBenchmarkMetadata = {
   id: "rewrite-chain",
   name: "Rewrite Chain",
+  version: "0.1.0",
   weaknessCategory: "rewrite-chain",
+  supportedModes: ["single-turn", "multi-turn"],
   description:
     "Deterministic synthetic rewrite-chain cases for multi-step consistency checks."
 };
@@ -12,8 +14,12 @@ export const rewriteChainCases: RewriteChainCase[] = [
   {
     id: "rc-2-step-alpha",
     levelId: "level-1",
-    name: "2-step token rewrite",
-    stepCount: 2,
+    title: "2-step token rewrite",
+    prompt:
+      "Starting text: red square\nApply steps in order:\n1) Replace 'red' with 'blue'.\n2) Append '!' to the end.\nReturn only the final text.",
+    metadata: {
+      stepCount: 2
+    },
     startingText: "red square",
     steps: [
       {
@@ -39,8 +45,12 @@ export const rewriteChainCases: RewriteChainCase[] = [
   {
     id: "rc-4-step-bravo",
     levelId: "level-2",
-    name: "4-step phrase rewrite",
-    stepCount: 4,
+    title: "4-step phrase rewrite",
+    prompt:
+      "Starting text: cat sat on mat\nApply steps in order:\n1) Replace 'cat' with 'dog'.\n2) Replace 'mat' with 'rug'.\n3) Prepend 'the '.\n4) Append '.'.\nReturn only the final text.",
+    metadata: {
+      stepCount: 4
+    },
     startingText: "cat sat on mat",
     steps: [
       {
@@ -83,8 +93,12 @@ export const rewriteChainCases: RewriteChainCase[] = [
   {
     id: "rc-6-step-charlie",
     levelId: "level-3",
-    name: "6-step chained rewrite",
-    stepCount: 6,
+    title: "6-step chained rewrite",
+    prompt:
+      "Starting text: A-B-C\nApply steps in order:\n1) Replace 'A' with 'alpha'.\n2) Replace 'B' with 'beta'.\n3) Replace 'C' with 'gamma'.\n4) Replace '-' with '/'.\n5) Prepend '['.\n6) Append ']'.\nReturn only the final text.",
+    metadata: {
+      stepCount: 6
+    },
     startingText: "A-B-C",
     steps: [
       {

@@ -1,7 +1,19 @@
-export { rewriteBenchmarkMetadata, rewriteChainCases } from "./cases";
-export { scoreFinalAnswer } from "./score";
+import { rewriteBenchmarkMetadata, rewriteChainCases } from "./cases";
+import { scoreAnswer } from "./score";
+
+export { rewriteBenchmarkMetadata, rewriteChainCases, scoreAnswer };
+
+export const runtimeBenchmarkModule = {
+  metadata: rewriteBenchmarkMetadata,
+  cases: rewriteChainCases,
+  scoreAnswer
+};
+
+export default runtimeBenchmarkModule;
+
 export type {
-  FinalAnswerScore,
+  RuntimeBenchmarkModule,
+  ScoreAnswerResult,
   RewriteBenchmarkMetadata,
   RewriteChainCase,
   RewriteOperation,

@@ -1,13 +1,30 @@
-import type { FinalAnswerScore, RewriteChainCase } from "./types";
+import { rewriteChainCases } from "./cases";
+import type { RewriteChainCase, ScoreAnswerResult } from "./types";
 
-export function scoreFinalAnswer(
-  benchmarkCase: RewriteChainCase,
-  submittedFinalText: string
-): FinalAnswerScore {
+const casesById: Record<string, RewriteChainCase> = Object.fromEntries(
+  rewriteChainCases.map((benchmarkCase) => [benchmarkCase.id, benchmarkCase])
+);
+
+export function scoreAnswer(caseId: string, answerText: string): ScoreAnswerResult {
+  const benchmarkCase = casesById[caseId];
+
+  if (!benchmarkCase) {
+    return {
+      correct: false,
+      score: 0,
+      expectedAnswer: "",
+      message: `Unknown case id: ${caseId}`
+    };
+  }
+
+  const expectedAnswer = benchmarkCase.expectedFinalText;
+  const correct = answerText === expectedAnswer;
+
   return {
-    isCorrect: submittedFinalText === benchmarkCase.expectedFinalText,
-    expectedFinalText: benchmarkCase.expectedFinalText,
-    submittedFinalText
+    correct,
+    score: correct ? 1 : 0,
+    expectedAnswer,
+    message: correct ? "Correct final text." : "Incorrect final text."
   };
 }
 

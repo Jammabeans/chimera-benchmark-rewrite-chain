@@ -22,8 +22,11 @@ export type RewriteStep = {
 export type RewriteChainCase = {
   id: string;
   levelId: string;
-  name: string;
-  stepCount: number;
+  title: string;
+  prompt: string;
+  metadata?: {
+    stepCount: number;
+  };
   startingText: string;
   steps: RewriteStep[];
   expectedFinalText: string;
@@ -32,12 +35,21 @@ export type RewriteChainCase = {
 export type RewriteBenchmarkMetadata = {
   id: string;
   name: string;
+  version: string;
   weaknessCategory: "rewrite-chain";
   description: string;
+  supportedModes: Array<"single-turn" | "multi-turn">;
 };
 
-export type FinalAnswerScore = {
-  isCorrect: boolean;
-  expectedFinalText: string;
-  submittedFinalText: string;
+export type ScoreAnswerResult = {
+  correct: boolean;
+  score: number;
+  expectedAnswer: string;
+  message: string;
+};
+
+export type RuntimeBenchmarkModule = {
+  metadata: RewriteBenchmarkMetadata;
+  cases: RewriteChainCase[];
+  scoreAnswer: (caseId: string, answerText: string) => ScoreAnswerResult;
 };
