@@ -1,0 +1,30 @@
+{
+  "id": "rewrite-chain",
+  "name": "Rewrite Chain",
+  "version": "0.1.0",
+  "description": "Safe synthetic benchmark scaffold for evaluating multi-step rewrite consistency.",
+  "weaknessCategory": "rewrite-chain",
+  "supportedModes": [
+    "single-turn",
+    "multi-turn"
+  ],
+  "entrypoint": "src/index.ts",
+  "levels": [
+    {
+      "id": "level-1",
+      "name": "2-step rewrite",
+      "description": "Applies two ordered deterministic rewrite steps to produce a final text."
+    },
+    {
+      "id": "level-2",
+      "name": "4-step rewrite",
+      "description": "Applies four ordered deterministic rewrite steps with mixed operations."
+    },
+    {
+      "id": "level-3",
+      "name": "6-step rewrite",
+      "description": "Applies six ordered deterministic rewrite steps for deeper chain consistency checks."
+    }
+  ],
+  "owner": "chimera-labs"
+}
