@@ -1,0 +1,37 @@
+{
+  "benchmarkId": "rewrite-chain",
+  "benchmarkName": "Rewrite Chain",
+  "scoringMode": "exact-text",
+  "cases": [
+    {
+      "id": "rc-2-step-alpha",
+      "levelId": "level-1",
+      "title": "2-step token rewrite",
+      "prompt": "Starting text: red square\nApply steps in order:\n1) Replace 'red' with 'blue'.\n2) Append '!' to the end.\nReturn only the final text.",
+      "expectedAnswer": "blue square!",
+      "metadata": {
+        "stepCount": 2
+      }
+    },
+    {
+      "id": "rc-4-step-bravo",
+      "levelId": "level-2",
+      "title": "4-step phrase rewrite",
+      "prompt": "Starting text: cat sat on mat\nApply steps in order:\n1) Replace 'cat' with 'dog'.\n2) Replace 'mat' with 'rug'.\n3) Prepend 'the '.\n4) Append '.'.\nReturn only the final text.",
+      "expectedAnswer": "the dog sat on rug.",
+      "metadata": {
+        "stepCount": 4
+      }
+    },
+    {
+      "id": "rc-6-step-charlie",
+      "levelId": "level-3",
+      "title": "6-step chained rewrite",
+      "prompt": "Starting text: A-B-C\nApply steps in order:\n1) Replace 'A' with 'alpha'.\n2) Replace 'B' with 'beta'.\n3) Replace 'C' with 'gamma'.\n4) Replace '-' with '/'.\n5) Prepend '['.\n6) Append ']'.\nReturn only the final text.",
+      "expectedAnswer": "[alpha/beta/gamma]",
+      "metadata": {
+        "stepCount": 6
+      }
+    }
+  ]
+}

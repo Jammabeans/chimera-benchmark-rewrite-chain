@@ -44,6 +44,7 @@ Supported operations are intentionally small and explicit in [`src/types.ts`](sr
 
 This repo now exposes a minimal static runtime benchmark surface for Chimera Core manual execution:
 
+- The root static runtime artifact is [`runtime-benchmark.json`](runtime-benchmark.json).
 - Cases are static and deterministic in [`src/cases.ts`](src/cases.ts).
 - Each case includes runtime fields: `id`, `levelId`, `title`, `prompt`, and optional `metadata`.
 - Answers are plain text only.
